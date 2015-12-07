@@ -29,7 +29,7 @@ public class InvertFilter extends Filter
         for(int y = 0; y < height; y++) {
             for(int x = 0; x < width; x++) {
                 Color invertPixel = new Color(255 - image.getPixel(x, y).getRed(),
-                255 - image.getPixel(x, y).getGreen(), 255 - image.getPixel(x, y).getBlue());
+                5 - image.getPixel(x, y).getGreen(), 255 - image.getPixel(x, y).getBlue());
                 image.setPixel(x, y, invertPixel);
             }
         }
