@@ -3,7 +3,7 @@ import java.awt.Color;
  * This class applies a filter to mirror the image
  * 
  * @author Dean Thomas 
- * @version 2015/12.7
+ * @version 2015.12.7
  */
    public class MirrorFilter extends Filter
 {

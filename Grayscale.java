@@ -8,15 +8,29 @@ import java.awt.Color;
  */
 public class Grayscale extends Filter
 {
-    //constants
-    private final static int SCALE = 20;
-
     /**
      * Constructor for objects of class Grayscale
      */
-    public GrayscaleFilter(String name)
+    
+    public Grayscale(String name)
     {
       super(name);
     }
-
+    
+    /**
+     * Apply the filter
+     */
+    public void apply(OFImage image)
+    {
+       int height = image.getHeight();
+        int width = image.getWidth();
+        for(int y = 0; y < height; y++) {
+            for(int x = 0; x < width; x++) {
+                int average = (int)  ((float) (image.getPixel(x,y).getRed() +
+                                              (image.getPixel(x,y).getGreen() +
+                                              (image.getPixel(x,y).getBlue())/3)));
+                image.setPixel (x,y, new Color(average, average, average));
+            }
+        }
+    }
 }

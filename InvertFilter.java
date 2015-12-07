@@ -1,33 +1,37 @@
-
+import java.awt.Color;
 /**
- * Write a description of class InvertFilter here.
+ * This class applies a filter to invert the image
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Dean Thomas 
+ * @version 2015.12.7
  */
-public class InvertFilter
+public class InvertFilter extends Filter
 {
-    // instance variables - replace the example below with your own
-    private int x;
-
     /**
-     * Constructor for objects of class InvertFilter
+     * Constructor for InvertFilter objects using an input name for the filter
+     * 
+     * @param name  The name of the filter
      */
-    public InvertFilter()
+    public InvertFilter(String name)
     {
-        // initialise instance variables
-        x = 0;
+        super(name);
     }
 
     /**
-     * An example of a method - replace this comment with your own
+     * Applies the invert filter to the current image by inverting the color of each pixel
      * 
-     * @param  y   a sample parameter for a method
-     * @return     the sum of x and y 
+     * @param image  The image to be inverted
      */
-    public int sampleMethod(int y)
+    public void apply(OFImage image)
     {
-        // put your code here
-        return x + y;
+        int height = image.getHeight();
+        int width = image.getWidth();
+        for(int y = 0; y < height; y++) {
+            for(int x = 0; x < width; x++) {
+                Color invertPixel = new Color(255 - image.getPixel(x, y).getRed(),
+                255 - image.getPixel(x, y).getGreen(), 255 - image.getPixel(x, y).getBlue());
+                image.setPixel(x, y, invertPixel);
+            }
+        }
     }
 }
